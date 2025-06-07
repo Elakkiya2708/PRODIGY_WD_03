@@ -1,0 +1,115 @@
+:root {
+  --primary-bg: #E6A8D7; /* greenish light blue */
+  --dark-bg: #1c1c1c;
+  --light-text: #ffffff;
+  --dark-text: #000000;
+  --highlight: #ffdf00;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--primary-bg);
+  color: var(--dark-text);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
+  transition: background-color 0.3s;
+}
+
+body.dark {
+  background-color: var(--dark-bg);
+  color: var(--light-text);
+}
+
+.container {
+  padding: 20px;
+}
+
+h1 {
+  margin-bottom: 10px;
+}
+
+.scoreboard {
+  margin-bottom: 20px;
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+button {
+  padding: 10px 15px;
+  margin: 10px 5px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  background-color: #2f7d6e;
+  color: white;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-gap: 5px;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.cell {
+  width: 100px;
+  height: 100px;
+  background: #ffffff;
+  font-size: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 6px;
+  transition: transform 0.3s;
+}
+
+body.dark .cell {
+  background: #333;
+  color: #fff;
+}
+
+.cell.winning {
+  background: var(--highlight);
+  animation: glow 1s infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 5px #ffdf00;
+  }
+  to {
+    box-shadow: 0 0 20px #ffdf00;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .board {
+    grid-template-columns: repeat(3, 80px);
+  }
+
+  .cell {
+    width: 80px;
+    height: 80px;
+    font-size: 1.5em;
+  }
+
+  .scoreboard {
+    font-size: 16px;
+  }
+
+  button {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+}
